@@ -1,15 +1,16 @@
-.pokemon-detail{
-    span{
+.pokemon-detail {
+    span {
         text-transform: capitalize;
     }
-    .wrap-detail{
+    .wrap-detail {
         display: flex;
-        .left,.right{
+        .left,
+        .right {
             flex: 1;
             padding: 8px;
         }
-        .left{
-            img{
+        .left {
+            img {
                 width: 100%;
             }
         }

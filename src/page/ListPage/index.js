@@ -7,7 +7,7 @@ import actions from '../../redux/actions'
 
 import './index.scss'
 
-const sizeOption = [10,20,50,100];
+const sizeOption = [10, 20, 50, 100];
 const { Meta } = Card;
 
 const ListPage = () => {
@@ -21,28 +21,28 @@ const ListPage = () => {
     const [isVisible, setIsVisible] = useState(false)
     const [page, setPage] = useState(1)
     const [value, setValue] = useState('')
-    const [timeOut, setTimeOut] = useState(0) 
+    const [timeOut, setTimeOut] = useState(0)
 
     const initListPokemon = async (page, limit) => {
         const params = {
             limit: limit,
-            offset: limit*(page-1)
+            offset: limit * (page - 1)
         }
         setIsLoading(true)
         const response = await dispatch(actions.getListPokemon(params))
-        if(response.ok) {
-          const { results, count } = response.data
-          setTotal(count)
-          let arr = [];
-          for(let item in results) {
-            let res = await dispatch(actions.getPokemonDetail(results[item].url))
-            if(res.ok) {
-              arr.push(res.data)
+        if (response.ok) {
+            const { results, count } = response.data
+            setTotal(count)
+            let arr = [];
+            for (let item in results) {
+                let res = await dispatch(actions.getPokemonDetail(results[item].url))
+                if (res.ok) {
+                    arr.push(res.data)
+                }
             }
-          }
-          setIsLoading(false)
-          setListPokemon(arr)
-          
+            setIsLoading(false)
+            setListPokemon(arr)
+
         }
     }
 
@@ -55,16 +55,16 @@ const ListPage = () => {
     const handleClick = (item) => {
         setPokemonDetail(item)
         setIsVisible(true)
-      }
-  
-      const handleCancel = () => {
+    }
+
+    const handleCancel = () => {
         setPokemonDetail({})
         setIsVisible(false);
-      };
-    
+    };
+
     const handleGetPoKemon = async (name) => {
         const response = await dispatch(actions.getPokemonByName(name))
-        if(response.ok){
+        if (response.ok) {
             setListPokemon([response.data])
         } else setListPokemon([])
     }
@@ -83,54 +83,54 @@ const ListPage = () => {
     }
 
     const renderCard = (list) => {
-        return list.map( item => (
+        return list.map(item => (
             <Card
                 hoverable
                 className="card-item"
                 onClick={() => handleClick(item)}
                 key={item.name}
-                cover={<img alt={item.name} src={get(item,'sprites.front_default')} />}
+                cover={<img alt={item.name} src={get(item, 'sprites.front_default')} />}
             >
                 <Meta title={item.name} />
             </Card>
         ))
-      }
+    }
 
     useEffect(() => {
-        initListPokemon(page,limit)
-    },[])
+        initListPokemon(page, limit)
+    }, [])
 
     return (
         <div className="wrap-list-page">
             <div className="search-bar">
-                <Input 
+                <Input
                     onChange={handleChange}
                     placeholder="Type ditto, pikachu,..."
                     value={value}></Input>
             </div>
             <Spin spinning={isLoading}>
-            <div className='wrap-card'>
-                {renderCard(listPokemon)}
-            </div>
-            {
-                listPokemon <= 0 ? (
-                    <Result
-                        status="404"
-                        title="404"
-                        subTitle="Not Found."
-                    />
-                ): null 
-            }
+                <div className='wrap-card'>
+                    {renderCard(listPokemon)}
+                </div>
+                {
+                    listPokemon <= 0 ? (
+                        <Result
+                            status="404"
+                            title="404"
+                            subTitle="Not Found."
+                        />
+                    ) : null
+                }
             </Spin>
             <div className="wrap-pagination">
-                <Pagination 
+                <Pagination
                     current={page}
                     total={total}
                     pageSize={limit}
                     onChange={handleChangePage}
-                    pageSizeOptions={sizeOption}/>
+                    pageSizeOptions={sizeOption} />
             </div>
-            
+
             <Modal wrapClassName="modal-infor" title="Infomation" visible={isVisible} footer={null} onCancel={handleCancel}>
                 <Detail pokemonDetail={pokemonDetail} />
             </Modal>

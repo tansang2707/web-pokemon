@@ -9,9 +9,9 @@ const getListVersion = () => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
@@ -25,9 +25,9 @@ const getListGeneration = () => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
@@ -41,9 +41,9 @@ const getListLocation = () => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
@@ -57,19 +57,17 @@ const getListItem = () => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
 
-const getListPokemon = ({limit, offset}) => {
-    const params = {
-        limit: 10
-    }
-    if(limit) params.limit = limit
-    if(offset) params.offset = offset
+const getListPokemon = ({ limit, offset }) => {
+    const params = {}
+    if (limit) params.limit = limit
+    if (offset) params.offset = offset
     return async (dispatch) => {
         try {
             const response = await APIServices.sendRequest(
@@ -79,9 +77,9 @@ const getListPokemon = ({limit, offset}) => {
                 params
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
@@ -95,9 +93,9 @@ const getPokemonDetail = (url) => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
@@ -111,9 +109,9 @@ const getItemDetail = (url) => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }
@@ -127,9 +125,9 @@ const getPokemonByName = (name) => {
                 {}
             )
             if (response.isError) throw response.err;
-            return { ok: true, data: response.data}
+            return { ok: true, data: response.data }
         } catch (error) {
-            return { ok: false, data: error}
+            return { ok: false, data: error }
         }
     }
 }

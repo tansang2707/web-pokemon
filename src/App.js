@@ -10,8 +10,8 @@ import ListPage from './page/ListPage'
 import './assets/styles/global.scss'
 
 function App() {
-  
-  const LayoutRoute = ({ path, component}) => {
+
+  const LayoutRoute = ({ path, component }) => {
     return (
       <Route exact path={path}>
         <DefaultLayout Component={component} />
@@ -21,8 +21,8 @@ function App() {
   return (
     <Router>
       <Switch>
-          <LayoutRoute path="/list-page" component={ListPage}/>
-          <LayoutRoute path="/" component={HomePage}/>
+        <LayoutRoute path="/list-page" component={ListPage} />
+        <LayoutRoute path="/" component={HomePage} />
       </Switch>
     </Router>
   );

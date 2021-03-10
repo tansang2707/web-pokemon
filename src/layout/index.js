@@ -1,5 +1,5 @@
 import { Layout } from 'antd'
-import SiderCustom from '../components/Sider' 
+import SiderCustom from '../components/Sider'
 import HeaderCustom from '../components/Header'
 
 import './index.scss'
@@ -12,7 +12,7 @@ const DefaultLayout = ({
     return (
         <Layout className="wrap-screen">
             <Header>
-                <HeaderCustom/>
+                <HeaderCustom />
             </Header>
             <Layout>
                 <Sider>
