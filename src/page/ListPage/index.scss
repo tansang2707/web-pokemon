@@ -1,0 +1,22 @@
+.wrap-list-page{
+    background: #fff;
+    .search-bar{
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 24px;
+    }
+    .wrap-card{
+        margin-bottom: 24px;
+        text-transform: capitalize;
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        .card-item{
+            width: 20% !important;
+        }
+    }
+    .wrap-pagination{
+        text-align: right;
+        padding-right: 24px;
+    }
+}

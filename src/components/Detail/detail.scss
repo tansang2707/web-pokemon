@@ -1,0 +1,17 @@
+.pokemon-detail{
+    span{
+        text-transform: capitalize;
+    }
+    .wrap-detail{
+        display: flex;
+        .left,.right{
+            flex: 1;
+            padding: 8px;
+        }
+        .left{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
